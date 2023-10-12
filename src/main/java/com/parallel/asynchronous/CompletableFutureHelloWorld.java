@@ -8,9 +8,10 @@ public class CompletableFutureHelloWorld {
 
         HelloWorldService hws = new HelloWorldService();
 
-        CompletableFuture.supplyAsync(() -> hws.helloWorld())
-                .thenAccept((value) -> System.out.println(value))
-                .join();
+        CompletableFuture
+                .supplyAsync(() -> hws.helloWorld()) // SupplyAsync is factory Method & Has Supplier Functional Interface, It Returns CompletableFuture<T>
+                .thenAccept((value) -> System.out.println(value)) //thenAccept is CompletionStage Method & has Consumer Functional Interface, It returns CompletableFuture<Void>
+                .join(); //Used to wait till this thread completes & join with the main thread
 
         System.out.println("Closing the main thread");
 
