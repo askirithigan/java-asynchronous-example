@@ -10,6 +10,7 @@ public class CompletableFutureHelloWorld {
 
         CompletableFuture
                 .supplyAsync(() -> hws.helloWorld()) // SupplyAsync is factory Method & Has Supplier Functional Interface, It Returns CompletableFuture<T>
+                .thenApply((result) -> result.toUpperCase()) //thenApply function used apply some changes from the supplyAsnc Result
                 .thenAccept((value) -> System.out.println(value)) //thenAccept is CompletionStage Method & has Consumer Functional Interface, It returns CompletableFuture<Void>
                 .join(); //Used to wait till this thread completes & join with the main thread
 
